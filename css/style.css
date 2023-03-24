@@ -1,9 +1,12 @@
-.wrapper{
+body{
     background-color: #dddddd;
+    overflow-x: hidden;
 }
 
 h1{
     color: #29b1dd;
+    padding: 2rem;
+    font-weight: bold;
 }
 
 .navbar{

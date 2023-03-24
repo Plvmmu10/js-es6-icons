@@ -126,21 +126,23 @@ const icons = [
 ];
 
 
+const selectMenu = document.getElementById('typeSelect');
+selectMenu.addEventListener('change', selectType);
 
-function drawCard(icons){
+function drawCard(element){
     let cardBox = document.createElement('div');
-    cardBox.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-column', 'rounded-3', 'icon-box');
+    cardBox.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-column', 'rounded-3', 'col-lg-2', 'col-md-4', 'col-sm-12','bg-white', 'm-3');
 
     let cardSmallBox = document.createElement('div');
     cardSmallBox.classList.add('py-3', 'd-flex', 'justify-content-center', 'align-items-center', 'flex-column');
     
 
     let cardIcon = document.createElement('i');
-    cardIcon.classList.add(`${icons.prefix + icons.family}`,`${icons.prefix + icons.name}`, 'fs-3', `${icons.color}`);
+    cardIcon.classList.add(`${element.prefix + element.family}`,`${element.prefix + element.name}`, 'fs-3', `${element.color}`);
     
     let cardName = document.createElement('p');
     cardName.classList.add('text-uppercase');
-    cardName.innerHTML = `<strong>${icons.name}</strong>`;
+    cardName.innerHTML = `<strong>${element.name}</strong>`;
     
     cardSmallBox.append(cardIcon,cardName);
     cardBox.append(cardSmallBox);
@@ -148,18 +150,32 @@ function drawCard(icons){
     return cardBox;
 }
 
+let cards = [];
+
+
 function init(){
     const iconsContainer = document.querySelector('.icons-container');
     for (let i = 0; i < icons.length; i++){
         const template = drawCard(icons[i]);
 
         iconsContainer.append(template);
-       
+        cards.push(template);
     }
     
-    
-    
 }
+
+
+function selectType(){
+    selectedValue = selectMenu.value;
+    for(let i = 0; i< icons.length; i++){
+        if (icons[i].type != selectedValue && selectedValue != "all"){
+            cards[i].classList.add('d-none');
+        }else{
+            cards[i].classList.remove('d-none');
+        }
+    }
+}
+
 
 init();
 
