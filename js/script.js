@@ -127,7 +127,6 @@ const icons = [
 
 
 
-
 function drawCard(icons){
     let cardBox = document.createElement('div');
     cardBox.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'flex-column', 'rounded-3', 'icon-box');
@@ -137,11 +136,11 @@ function drawCard(icons){
     
 
     let cardIcon = document.createElement('i');
-    cardIcon.classList.add(`${icons.prefix + icons.family}`,`${icons.prefix + icons.name}`, 'fs-3');
+    cardIcon.classList.add(`${icons.prefix + icons.family}`,`${icons.prefix + icons.name}`, 'fs-3', `${icons.color}`);
     
     let cardName = document.createElement('p');
-    cardName.classList.add('text-uppercase', 'fs-3');
-    cardName.innerText = `${icons.name}`;
+    cardName.classList.add('text-uppercase');
+    cardName.innerHTML = `<strong>${icons.name}</strong>`;
     
     cardSmallBox.append(cardIcon,cardName);
     cardBox.append(cardSmallBox);
@@ -163,7 +162,6 @@ function init(){
 }
 
 init();
-
 
 
 /* <div class="icon-box     ">
